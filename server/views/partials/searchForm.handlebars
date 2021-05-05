@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-sm-6">
+    {{!-- Normal Search Form --}}
+    <form class="search-form">
+      <label for="searchInput" class="col-sm-10">
+        <input id="searchInput" type="search" name="searchTerm" placeholder="Enter search term" class="form-control"
+          autocomplete="off" />
+      </label>
+      <input type="submit" class="btn btn-outline-success" value="Search" />
+    </form>
+    <a href="javascript:void(0);" class="advanced-search-link">Advanced search</a>
+    {{!-- Advanced Search Form --}}
+    <form class="advanced-search-form" hidden>
+      <label for="containingWords" class="col-sm-9">
+        <input id="containingWords" type="search" name="containingWords" placeholder="Containing any of the words"
+          class="form-control col-sm-5" autocomplete="off" />
+      </label>
+      <label for="exactPhrase" class="col-sm-9">
+        <input id="exactPhrase" type="search" name="exactPhrase" placeholder="Containing the phrase"
+          class="form-control col-sm-5" autocomplete="off" />
+      </label>
+      <input type="submit" class="btn btn-outline-success" value="Advanced Search" />
+    </form>
+    <a href="javascript:void(0);" class="normal-search-link" hidden>Go back</a>
+    <a href="/" class="text-danger">&nbsp; &nbsp;Clear Search and Filters</a>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group row">
+      <label for="category-filter" class="col-sm-6 col-form-label col-form-label-sm" align="right">Category</label>
+      <div class="col-sm-6">
+        <select class="form-select" id="category-filter">
+          <option value="">All</option>
+          {{#each categories}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row sort-filter-row justify-content-end">
+  <div class="col-sm-6 sm-offset-6">
+    <div class="form-group row">
+      <label for="sort" class="col-sm-6 col-form-label col-form-label-sm" align="right">Sort by</label>
+      <div class="col-sm-6">
+        <select class="form-select" id="sort-filter">
+          <option value="desc" selected>Publication Date (Most recent first)</option>
+          <option value="asc">Publication Date (Oldest first)</option>
+          <option value="relevancy" selected>Most relevant first</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>

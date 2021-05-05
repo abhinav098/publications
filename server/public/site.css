@@ -1,0 +1,54 @@
+main {
+  color: #333 !important;
+  background-color: white;
+  padding-top: 60px;
+}
+
+#more {
+  display: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.container {
+  color: #333;
+}
+
+.sort-filter-row {
+  margin-top: -40px !important;
+}
+
+.page-content {
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100vh;
+}
+.page-content::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  background-color: #fff;
+}
+
+.publication {
+  padding: 5px;
+  padding: 2em 0;
+  border-bottom: #ccc solid 1px;
+}
+
+.abstract {
+  font-family: Calibri, Candara, Segoe, Optima, sans-serif;
+}
+
+.abstract .more-text {
+  display: none;
+}
+
+mark {
+  background: yellow !important;
+  color: inherit !important;
+}

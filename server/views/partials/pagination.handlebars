@@ -1,0 +1,17 @@
+<nav aria-label="Page navigation example">
+  <ul class="pagination pagination-sm justify-content-end">
+    <li class="page-item">
+      <a class="page-link prev" href="javascript:void(0);" tabindex="-1" aria-disabled="true" data-page={{currentPage}}
+        data-max={{pages count}}>Prev</a>
+    </li>
+    {{#each (paginationLinks count)}}
+      <li class="page-item {{isActive ../currentPage this }}">
+        <a class="page-link page-num" tabindex="-1" href="javascript:void(0);">{{this}}</a>
+      </li>
+    {{/each}}
+    <li class="page-item">
+      <a class="page-link next" href="javascript:void(0);" tabindex="-1" data-max={{pages count}}
+        data-page={{currentPage}}>Next</a>
+    </li>
+  </ul>
+</nav>

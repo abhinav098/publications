@@ -1,0 +1,99 @@
+<div class="loader">
+  <h5 align="center">Loading .....</h5>
+</div>
+<div class="content">
+  {{#if results}}
+    <div class="row">
+      <div class="col-sm-6">
+        <h4 class="searched-term">
+          {{#if searchTerm}}
+            Results for "{{searchTerm}}"
+          {{else}}
+            List of Publications
+          {{/if}}
+        </h4>
+        <i>{{recordCountMessage currentPage count}}</i>
+        {{#if suggestions}}
+          <p>
+            Did you mean <strong>({{{suggestionLinks suggestions}}})</strong>?
+          </p>
+        {{/if}}
+      </div>
+      <div class="col-sm-6">
+        {{>pagination}}
+      </div>
+    </div>
+    <div class="page-content">
+      {{#each results}}
+        <div class="publication">
+          <div class="row">
+            <div class="col-sm-12 col-lg-3">
+              <img src="{{image_s3}}"
+                onerror="this.src='https://climate.onep.go.th/wp-content/uploads/2020/01/default-image.png'" alt='image'
+                width="100%" height="100%">
+            </div>
+            <div class="col-sm-12 col-lg-9">
+              <h5 class="title text-info">
+                {{title}}
+              </h5>
+              <p class="text-dark">{{category}}</p>
+              <span class="authors text-muted"><small>by {{renderAuthors authors}}</small> </span>
+              <br>
+              <span class="publication-date text-muted"><small>Publication
+                  date: <i>{{formatDate publication_date}}</i></small>
+              </span>
+              <p class="abstract">{{abstract}}</p>
+              {{!-- Actionable items --}}
+              <a href="https://sercuarc.org/publication/?id={{id}}&pub-type={{category}}&publication={{title}}"
+                target="_blank">
+                <button type="button" class="btn btn-outline-secondary">Learn more</button>
+              </a>
+              <button type="button" class="preview-btn btn btn-outline-success" data-bs-toggle="modal"
+                data-bs-target="#modal_{{id}}" data-src="{{file_s3}}">Preview
+              </button>
+              <br>
+              <span class="badge bg-warning found-in-file" hidden>Search found in the file</span>
+              {{!-- Preview modal --}}
+              <div class="modal preview-modal" id="modal_{{id}}" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-fullscreen" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">{{title}}</h5>
+                      <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <iframe class="preview-src" style="width: 100%;height: 100%;border: none;"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        {{recordCountMessage currentPage count}}
+      </div>
+      <div class="col-sm-6">
+        {{>pagination}}
+      </div>
+    </div>
+  {{else}}
+    <br>
+    <h3 class="not-found text-center">We're sorry, but no results were found.</h3>
+    {{#if suggestions}}
+      <br />
+      <br />
+      <p align="center">
+        No results found for "{{searchTerm}}". Did you mean <strong>({{{suggestionLinks suggestions}}})</strong>?
+      </p>
+    {{/if}}
+  {{/if}}
+</div>

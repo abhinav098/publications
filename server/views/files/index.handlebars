@@ -1,0 +1,13 @@
+<br>
+<div class="row">
+  <div class="col-sm-12 search">
+    <div id="content">
+      {{#if results}}
+        {{> publications results=results}}
+      {{else}}
+        <br>
+        <h3 class="not-found text-center">We're sorry, but no results were found.</h3>
+      {{/if}}
+    </div>
+  </div>
+</div>
